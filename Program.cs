@@ -23,8 +23,8 @@ namespace DictionarySystemTextJson
          };
 
          Dictionary<string, string> values2 = JsonSerializer.Deserialize<Dictionary<string, string>>(element.Data.ToString());
-         Console.WriteLine(values.Count);
-         Console.WriteLine(values["User"]);
+         Console.WriteLine(values2.Count);
+         Console.WriteLine(values2["User"]);
          Console.ReadKey();
       }
    }
