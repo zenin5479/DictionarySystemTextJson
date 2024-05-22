@@ -22,9 +22,25 @@ namespace DictionarySystemTextJson
             Data = new StringBuilder(@"{""User"":""YoRHa2B"",""key"":""123""}")
          };
 
-         Dictionary<string, string> values2 = JsonSerializer.Deserialize<Dictionary<string, string>>(element.Data.ToString());
-         Console.WriteLine(values2.Count);
-         Console.WriteLine(values2["User"]);
+         Dictionary<string, string> valuesmyclient = JsonSerializer.Deserialize<Dictionary<string, string>>(element.Data.ToString());
+         Console.WriteLine(valuesmyclient.Count);
+         Console.WriteLine(valuesmyclient["User"]);
+         Console.WriteLine(valuesmyclient["User"]);
+
+         foreach (KeyValuePair<string, string> keyvaluepair in valuesmyclient)
+         {
+            Console.WriteLine($"{keyvaluepair.Key} = {keyvaluepair.Value}");
+         }
+
+         string json2 = @"{""ABC"": {""Name"": ""Bob"", ""Age"": ""40""},""DEF"": {""Type"": ""Cat"",""Sound"": ""Meow""}}";
+         var dictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(json2);
+
+         foreach (var (key, val) in dictionary)
+         {
+            Console.WriteLine($"{key}={val}");
+         }
+
+
          Console.ReadKey();
       }
    }
