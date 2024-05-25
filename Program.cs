@@ -13,9 +13,9 @@ namespace DictionarySystemTextJson
       static void Main()
       {
          // Десериализация словарей System.Text.Json по строке
-         const string json = @"{""User"":""YoRHa2B"",""key"":""123""}";
+         const string json = @"{""Androids Battle"":""YoRHa No.2 Type B"",""Age"":""3""}";
          Dictionary<string, string> values = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
-         Console.WriteLine("User = " + values["User"] + "\n" + "key = " + values["key"]);
+         Console.WriteLine("Androids Battle = " + values["Androids Battle"] + "\n" + "Age = " + values["Age"]);
          foreach (KeyValuePair<string, string> keyvaluepair in values)
          {
             Console.WriteLine($"{keyvaluepair.Key} = {keyvaluepair.Value}");
@@ -24,11 +24,11 @@ namespace DictionarySystemTextJson
          // Десериализация словарей System.Text.Json по классу
          MyClient element = new MyClient
          {
-            Data = new StringBuilder(@"{""User"":""YoRHa2B"",""key"":""123""}")
+            Data = new StringBuilder(@"{""Androids Battle"":""YoRHa No.2 Type B"",""Age"":""3""}")
          };
 
          Dictionary<string, string> valueselement = JsonSerializer.Deserialize<Dictionary<string, string>>(element.Data.ToString());
-         Console.WriteLine("User = " + valueselement["User"] + "\n" + "key = " + valueselement["key"]);
+         Console.WriteLine("Androids Battle = " + valueselement["Androids Battle"] + "\n" + "Age = " + valueselement["Age"]);
          foreach (KeyValuePair<string, string> keyvaluepair in valueselement)
          {
             Console.WriteLine($"{keyvaluepair.Key} = {keyvaluepair.Value}");
@@ -44,7 +44,7 @@ namespace DictionarySystemTextJson
 
          // Десериализация во вложенный словарь System.Text.Json по строке
          // Если нет возможности создавать класс для вложенного объекта, можно десериализовать его во вложенный словарь.
-         const string jsonnesteddictionary = @"{""ABC"": {""Name"": ""Bob"", ""Age"": ""40""},""DEF"": {""Type"": ""Cat"",""Sound"": ""Meow""}}";
+         const string jsonnesteddictionary = @"{""Androids Battle"": {""Name"": ""YoRHa No.2 Type B"", ""Age"": ""3""},""Androids Scanner"": {""Name"": ""YoRHa No.9 Type S"",""Age"": ""3""}}";
          Dictionary<string, Dictionary<string, string>> dictionarynesteddictionary = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonnesteddictionary);
          foreach (KeyValuePair<string, Dictionary<string, string>> keyvaluepair in dictionarynesteddictionary)
          {
