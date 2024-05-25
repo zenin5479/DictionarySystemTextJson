@@ -73,11 +73,6 @@ namespace DictionarySystemTextJson
 
    class MyClient
    {
-      public long Id;
-      public StringBuilder Username;
-      public TcpClient Client;
-      public NetworkStream Stream;
-      public byte[] Buffer;
       public StringBuilder Data;
       public EventWaitHandle Operate;
    };
