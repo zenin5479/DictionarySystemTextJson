@@ -4,7 +4,6 @@ using System.IO;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading;
 
 namespace DictionarySystemTextJson
@@ -35,33 +34,40 @@ namespace DictionarySystemTextJson
             Console.WriteLine($"{keyvaluepair.Key} = {keyvaluepair.Value}");
          }
 
+         // Десериализация словарей System.Text.Json по строке из файла
+         string jsonString = File.ReadAllText("YoRHa2B.json");
+         Dictionary<string, string> valuesclient2 = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+         foreach (KeyValuePair<string, string> keyvaluepair in valuesclient2)
+         {
+            Console.WriteLine($"{keyvaluepair.Key} = {keyvaluepair.Value}");
+         }
+
+
          // Десериализация во вложенный словарь
          // Если нет желания (или нет возможности) создавать класс для вложенного объекта, можно десериализовать его во вложенный словарь.
          string json2 = @"{""ABC"": {""Name"": ""Bob"", ""Age"": ""40""},""DEF"": {""Type"": ""Cat"",""Sound"": ""Meow""}}";
-          var dictionary = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(json2);
+         Dictionary<string, Dictionary<string, string>> dictionary = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(json2);
          foreach (var (key, nestedDictionary) in dictionary)
          {
             Console.WriteLine(key);
             foreach (var (property, val) in nestedDictionary)
             {
-               Console.WriteLine($"\t{property}={val}");
+               Console.WriteLine($"\t{property} = {val}");
             }
          }
-         
-         //var dictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(json2);
-         //foreach (var (key, val) in dictionary)
-         //{
-         //   Console.WriteLine($"{key}={val}");
-         //}
 
-         // Десериализация словарей System.Text.Json по строке из файла
-         string jsonString = File.ReadAllText("YoRHa2B.json");
+         // Десериализация во вложенный словарь System.Text.Json по строке из файла
+         string jsonString2 = File.ReadAllText("NestedDictionary.json");
 
-         //Dictionary<string, string> valuesclient2 = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
-         //foreach (KeyValuePair<string, string> keyvaluepair in valuesclient2)
-         //{
-         //   Console.WriteLine($"{keyvaluepair.Key} = {keyvaluepair.Value}");
-         //}
+         Dictionary<string, Dictionary<string, string>> dictionary2 = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonString2);
+         foreach (var (key, nestedDictionary) in dictionary)
+         {
+            Console.WriteLine(key);
+            foreach (var (property, val) in nestedDictionary)
+            {
+               Console.WriteLine($"\t{property} = {val}");
+            }
+         }
 
          Console.ReadKey();
       }
