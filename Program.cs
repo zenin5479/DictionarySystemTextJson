@@ -13,7 +13,7 @@ namespace DictionarySystemTextJson
       static void Main()
       {
          // Десериализация словарей System.Text.Json по строке
-         string json = @"{""User"":""YoRHa2B"",""key"":""123""}";
+         const string json = @"{""User"":""YoRHa2B"",""key"":""123""}";
          Dictionary<string, string> values = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
          Console.WriteLine("User = " + values["User"] + "\n" + "key = " + values["key"]);
          foreach (KeyValuePair<string, string> keyvaluepair in values)
@@ -42,16 +42,16 @@ namespace DictionarySystemTextJson
             Console.WriteLine($"{keyvaluepair.Key} = {keyvaluepair.Value}");
          }
 
-         // Десериализация во вложенный словарь
+         // Десериализация во вложенный словарь System.Text.Json по строке
          // Если нет возможности создавать класс для вложенного объекта, можно десериализовать его во вложенный словарь.
          const string jsonnesteddictionary = @"{""ABC"": {""Name"": ""Bob"", ""Age"": ""40""},""DEF"": {""Type"": ""Cat"",""Sound"": ""Meow""}}";
          Dictionary<string, Dictionary<string, string>> dictionarynesteddictionary = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonnesteddictionary);
-         foreach (var (key, nesteddictionary) in dictionarynesteddictionary)
+         foreach (KeyValuePair<string, Dictionary<string, string>> keyvaluepair in dictionarynesteddictionary)
          {
-            Console.WriteLine(key);
-            foreach (var (property, val) in nesteddictionary)
+            Console.WriteLine(keyvaluepair.Key);
+            foreach (KeyValuePair<string, string> pairkeyvalue in keyvaluepair.Value)
             {
-               Console.WriteLine($"\t{property} = {val}");
+               Console.WriteLine($"\t{pairkeyvalue.Key} = {pairkeyvalue.Value}");
             }
          }
 
