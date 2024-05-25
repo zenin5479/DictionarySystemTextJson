@@ -45,8 +45,8 @@ namespace DictionarySystemTextJson
          // Десериализация во вложенный словарь System.Text.Json по строке
          // Если нет возможности создавать класс для вложенного объекта, можно десериализовать его во вложенный словарь.
          const string jsonnesteddictionary = @"{""Androids Battle"": {""Name"": ""YoRHa No.2 Type B"", ""Age"": ""3""},""Androids Scanner"": {""Name"": ""YoRHa No.9 Type S"",""Age"": ""3""}}";
-         Dictionary<string, Dictionary<string, string>> dictionarynesteddictionary = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonnesteddictionary);
-         foreach (KeyValuePair<string, Dictionary<string, string>> keyvaluepair in dictionarynesteddictionary)
+         Dictionary<string, Dictionary<string, string>> nesteddictionary = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonnesteddictionary);
+         foreach (KeyValuePair<string, Dictionary<string, string>> keyvaluepair in nesteddictionary)
          {
             Console.WriteLine(keyvaluepair.Key);
             foreach (KeyValuePair<string, string> pairkeyvalue in keyvaluepair.Value)
@@ -57,8 +57,8 @@ namespace DictionarySystemTextJson
 
          // Десериализация во вложенный словарь System.Text.Json по строке из файла
          string jsonnesteddictionaryfile = File.ReadAllText("NestedDictionary.json");
-         Dictionary<string, Dictionary<string, string>> dictionarynesteddictionaryfile = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonnesteddictionaryfile);
-         foreach (KeyValuePair<string, Dictionary<string, string>> keyvaluepair in dictionarynesteddictionaryfile)
+         Dictionary<string, Dictionary<string, string>> nesteddictionaryfile = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonnesteddictionaryfile);
+         foreach (KeyValuePair<string, Dictionary<string, string>> keyvaluepair in nesteddictionaryfile)
          {
             Console.WriteLine(keyvaluepair.Key);
             foreach (KeyValuePair<string, string> pairkeyvalue in keyvaluepair.Value)
@@ -74,6 +74,5 @@ namespace DictionarySystemTextJson
    class MyClient
    {
       public StringBuilder Data;
-      public EventWaitHandle Operate;
    };
 }
