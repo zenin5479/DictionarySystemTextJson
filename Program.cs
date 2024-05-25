@@ -44,7 +44,7 @@ namespace DictionarySystemTextJson
 
 
          // Десериализация во вложенный словарь
-         // Если нет желания (или нет возможности) создавать класс для вложенного объекта, можно десериализовать его во вложенный словарь.
+         // Если нет возможности создавать класс для вложенного объекта, можно десериализовать его во вложенный словарь.
          string json2 = @"{""ABC"": {""Name"": ""Bob"", ""Age"": ""40""},""DEF"": {""Type"": ""Cat"",""Sound"": ""Meow""}}";
          Dictionary<string, Dictionary<string, string>> dictionary = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(json2);
          foreach (var (key, nestedDictionary) in dictionary)
