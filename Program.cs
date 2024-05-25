@@ -60,10 +60,11 @@ namespace DictionarySystemTextJson
          string jsonString2 = File.ReadAllText("NestedDictionary.json");
 
          Dictionary<string, Dictionary<string, string>> dictionary2 = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonString2);
-         foreach (var (key, nestedDictionary) in dictionary2)
+        
+         foreach (var (key, nestedDictionary2) in dictionary2)
          {
             Console.WriteLine(key);
-            foreach (var (property, val) in nestedDictionary)
+            foreach (var (property, val) in nestedDictionary2)
             {
                Console.WriteLine($"\t{property} = {val}");
             }
