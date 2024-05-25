@@ -60,15 +60,51 @@ namespace DictionarySystemTextJson
          string jsonString2 = File.ReadAllText("NestedDictionary.json");
 
          Dictionary<string, Dictionary<string, string>> dictionary2 = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonString2);
-        
-         foreach (var (key, nestedDictionary2) in dictionary2)
+
+         foreach (var (key2, nestedDictionary2) in dictionary2)
          {
-            Console.WriteLine(key);
+            Console.WriteLine(key2);
             foreach (var (property, val) in nestedDictionary2)
             {
                Console.WriteLine($"\t{property} = {val}");
             }
          }
+
+         Dictionary<string, Dictionary<string, string>> dictionary3 = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonString2);
+
+         foreach (var (key3, nestedDictionary3) in dictionary3)
+         {
+            Console.WriteLine(key3);
+            foreach (var (property, val) in nestedDictionary3)
+            {
+               Console.WriteLine($"\t{property} = {val}");
+            }
+         }
+
+
+
+         Dictionary<Tuple<int, string>, string> tupleDictionary = new Dictionary<Tuple<int, string>, string>();
+         // Добавление значений
+         tupleDictionary.Add(Tuple.Create(1, "A"), "Value1");
+         tupleDictionary.Add(Tuple.Create(2, "B"), "Value2");
+         // Доступ к значениям
+         Console.WriteLine(tupleDictionary[Tuple.Create(1, "A")]); // Output: Value1
+         // Повторение по словарю
+         foreach (KeyValuePair<Tuple<int, string>, string> entry in tupleDictionary)
+         {
+            Console.WriteLine($"Key: {entry.Key}, Value: {entry.Value}");
+         }
+
+         Dictionary<string, (string Food, int Age)> dictionary7 = new Dictionary<string, (string Food, int Age)>();
+
+         dictionary7.Add("Bob", ("Burgers", 40));
+         dictionary7.Add("Teddy", ("Burgers", 45));
+
+         foreach (KeyValuePair<string, (string Food, int Age)> kvp in dictionary7)
+         {
+            Console.WriteLine($"{kvp.Key}, age {kvp.Value.Age} likes {kvp.Value.Food}");
+         }
+
 
          Console.ReadKey();
       }
