@@ -1,2 +1,1 @@
-# DictionarySystemTextJson
-Десериализация словарей System.Text.Json
+# Десериализация словарей System.Text.Json
